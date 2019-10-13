@@ -13,34 +13,34 @@ CREATE TABLE IF NOT EXISTS users
 	first_name VARCHAR(255),
 	last_name VARCHAR(255),
 	password VARCHAR(255) NOT NULL,
-	username VARCHAR(255) NOT NULL
+	username VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS skills
 (
 	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-	name VARCHAR(255) NOT NULL
+	name VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS sources 
 (
 	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
 	description VARCHAR(255),
-	name VARCHAR(255) NOT NULL
+	name VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS users_known_sources 
 (
-	user_id BIGINT(20) NOT NULL ,
-	source_id BIGINT(20) NOT NULL ,
+	user_id BIGINT(20) NOT NULL,
+	source_id BIGINT(20) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (source_id) REFERENCES sources(id)
 );
 
 CREATE TABLE IF NOT EXISTS sources_attached_skills 
 (
-	source_id BIGINT(20) NOT NULL ,
-	skill_id BIGINT(20) NOT NULL ,
+	source_id BIGINT(20) NOT NULL,
+	skill_id BIGINT(20) NOT NULL,
     FOREIGN KEY (skill_id) REFERENCES skills(id),
     FOREIGN KEY (source_id) REFERENCES sources(id)
 );

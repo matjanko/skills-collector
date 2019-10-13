@@ -11,10 +11,10 @@ public class Source {
     @Column(name = "id", length = 20)
     private long id;
 
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "name", nullable = false, length = 255)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     public long getId() {

@@ -11,16 +11,16 @@ public class User {
     @Column(name = "id", length = 20)
     private long id;
 
-    @Column(name = "first_name", nullable = true, length = 255)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = true, length = 255)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "password", nullable = false, length = 255)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "username" , nullable = false, length = 255)
+    @Column(name = "username" , nullable = false, unique = true)
     private String userName;
 
     public long getId() {

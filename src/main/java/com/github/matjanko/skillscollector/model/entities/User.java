@@ -30,6 +30,15 @@ public class User {
     inverseJoinColumns = {@JoinColumn(name = "source_id", referencedColumnName = "id")})
     private List<Source> sources;
 
+    public User() {
+
+    }
+
+    public User(String username, String password) {
+        this.password = password;
+        this.username = username;
+    }
+
     public long getId() {
         return id;
     }

@@ -1,8 +1,8 @@
 package com.github.matjanko.skillscollector.listeners;
 
-import com.github.matjanko.skillscollector.model.entity.Skill;
-import com.github.matjanko.skillscollector.model.entity.Source;
-import com.github.matjanko.skillscollector.model.entity.User;
+import com.github.matjanko.skillscollector.model.entities.Skill;
+import com.github.matjanko.skillscollector.model.entities.Source;
+import com.github.matjanko.skillscollector.model.entities.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

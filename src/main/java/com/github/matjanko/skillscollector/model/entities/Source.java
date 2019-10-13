@@ -1,4 +1,4 @@
-package com.github.matjanko.skillscollector.model.entity;
+package com.github.matjanko.skillscollector.model.entities;
 
 import javax.persistence.*;
 import java.util.Objects;

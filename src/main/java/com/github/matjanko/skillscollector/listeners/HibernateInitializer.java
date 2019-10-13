@@ -1,5 +1,8 @@
 package com.github.matjanko.skillscollector.listeners;
 
+import com.github.matjanko.skillscollector.model.entity.Skill;
+import com.github.matjanko.skillscollector.model.entity.Source;
+import com.github.matjanko.skillscollector.model.entity.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -11,12 +14,12 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.util.Properties;
 import java.util.logging.Level;
-
-import static com.github.matjanko.skillscollector.listeners.RequestAttributesLogger.logger;
+import java.util.logging.Logger;
 
 @WebListener
 public class HibernateInitializer implements ServletContextListener {
     public static final String SESSION_FACTORY = "hibernateSessionFactory";
+    private static final Logger LOGGER = Logger.getLogger(HibernateInitializer.class.getName());
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -35,11 +38,9 @@ public class HibernateInitializer implements ServletContextListener {
             hbnProperties.put(Environment.HBM2DDL_AUTO, "validate");
             configuration.setProperties(hbnProperties);
 
-            // Odkomentuj poniższe instrukcje po utworzeniu klas encji (kolejne zadania)
-
-            //configuration.addAnnotatedClass(User.class);
-            //configuration.addAnnotatedClass(Source.class);
-            //configuration.addAnnotatedClass(Skill.class);
+            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Source.class);
+            configuration.addAnnotatedClass(Skill.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
@@ -48,7 +49,7 @@ public class HibernateInitializer implements ServletContextListener {
             sce.getServletContext().setAttribute(SESSION_FACTORY, sessionFactory);
 
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Błąd konfiguracji Hibernate!", e);
+            LOGGER.log(Level.SEVERE, "Błąd konfiguracji Hibernate!", e);
         }
     }
 }

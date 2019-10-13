@@ -8,21 +8,21 @@ import java.util.logging.Logger;
 @WebListener
 public class RequestAttributesLogger implements ServletRequestAttributeListener {
 
-    public static final Logger logger = Logger.getLogger(RequestAttributesLogger.class.getName());
+    public static final Logger log = Logger.getLogger(RequestAttributesLogger.class.getName());
 
     @Override
     public void attributeAdded(ServletRequestAttributeEvent event) {
         String attrName = event.getName();
         Object attrValue = event.getValue();
 
-        logger.info(String.format("Dodano atrybut %s o wartości %s", attrName, attrValue));
+        log.info(String.format("Dodano atrybut %s o wartości %s", attrName, attrValue));
     }
 
     @Override
     public void attributeRemoved(ServletRequestAttributeEvent event) {
         String attrName = event.getName();
 
-        logger.info(String.format("Usunięto atrybut %s", attrName));
+        log.info(String.format("Usunięto atrybut %s", attrName));
     }
 
     @Override
@@ -30,6 +30,6 @@ public class RequestAttributesLogger implements ServletRequestAttributeListener 
         String attrName = event.getName();
         Object attrValue = event.getValue();
 
-        logger.info(String.format("Zmieniono atrybut %s na wartość %s", attrName, attrValue));
+        log.info(String.format("Zmieniono atrybut %s na wartość %s", attrName, attrValue));
     }
 }

@@ -1,6 +1,7 @@
 package com.github.matjanko.skillscollector.model.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +23,12 @@ public class User {
 
     @Column(name = "username" , nullable = false, unique = true)
     private String userName;
+
+    @ManyToMany
+    @JoinTable(name = "users_known_sources",
+    joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+    inverseJoinColumns = {@JoinColumn(name = "source_id", referencedColumnName = "id")})
+    private List<Source> sources;
 
     public long getId() {
         return id;
@@ -61,6 +68,14 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public List<Source> getSources() {
+        return sources;
+    }
+
+    public void setSources(List<Source> sources) {
+        this.sources = sources;
     }
 
     @Override

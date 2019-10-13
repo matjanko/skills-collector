@@ -4,7 +4,7 @@ import com.github.matjanko.skillscollector.model.entities.Source;
 import org.hibernate.SessionFactory;
 
 public class SourceDao extends BaseDao {
-    protected SourceDao(SessionFactory sessionFactory) {
+    public SourceDao(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 

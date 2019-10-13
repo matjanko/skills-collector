@@ -22,7 +22,7 @@ public class User {
     private String password;
 
     @Column(name = "username" , nullable = false, unique = true)
-    private String userName;
+    private String username;
 
     @ManyToMany
     @JoinTable(name = "users_known_sources",
@@ -62,12 +62,12 @@ public class User {
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public List<Source> getSources() {
@@ -87,12 +87,12 @@ public class User {
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
                 password.equals(user.password) &&
-                userName.equals(user.userName);
+                username.equals(user.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, password, userName);
+        return Objects.hash(id, firstName, lastName, password, username);
     }
 
     @Override
@@ -102,7 +102,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userName='" + username + '\'' +
                 '}';
     }
 }

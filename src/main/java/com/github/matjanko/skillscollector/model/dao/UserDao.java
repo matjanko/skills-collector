@@ -33,7 +33,8 @@ public class UserDao extends BaseDao {
 
     public Boolean isUsernameAvailable(String username) {
         return super.produceInTransaction(
-                session -> session.createQuery("SELECT count(u) FROM User u WHERE u.username = :username", Long.class)
+                session -> session.createQuery(
+                        "SELECT count(u) FROM User u WHERE u.username = :username", Long.class)
                         .setParameter("username", username)
                         .getSingleResult() <= 0
         );
